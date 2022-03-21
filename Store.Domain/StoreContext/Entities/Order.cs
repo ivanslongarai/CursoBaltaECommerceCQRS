@@ -1,8 +1,8 @@
 using Flunt.Validations;
-using Store.Shared.Entities;
-using Store.SharedDomain.Enums;
+using Store.Store.Shared.Entities;
+using Store.Store.Share.Enums;
 
-namespace Store.StoreDomain.StoreContext.Entities;
+namespace Store.Domain.StoreContext.Entities;
 
 public class Order : Entity
 {

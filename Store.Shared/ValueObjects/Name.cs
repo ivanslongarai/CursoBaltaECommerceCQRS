@@ -1,6 +1,6 @@
 using Flunt.Validations;
 
-namespace Store.Shared.ValueObjects;
+namespace Store.Store.Shared.ValueObjects;
 
 public class Name : ValueObject
 {

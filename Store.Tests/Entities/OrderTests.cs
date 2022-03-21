@@ -1,8 +1,7 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Store.Shared.ValueObjects;
-using Store.SharedDomain.Enums;
-using Store.StoreDomain.StoreContext.Entities;
+using Store.Store.Shared.ValueObjects;
+using Store.Store.Share.Enums;
+using Store.Domain.StoreContext.Entities;
 
 namespace Store.Tests.Entities;
 

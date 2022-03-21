@@ -1,6 +1,6 @@
 using Flunt.Notifications;
 
-namespace Store.Shared.ValueObjects;
+namespace Store.Store.Shared.ValueObjects;
 
 public abstract class ValueObject : Notifiable
 {

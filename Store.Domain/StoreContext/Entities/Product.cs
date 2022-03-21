@@ -1,7 +1,7 @@
 using Flunt.Validations;
-using Store.Shared.Entities;
+using Store.Store.Shared.Entities;
 
-namespace Store.StoreDomain.StoreContext.Entities;
+namespace Store.Domain.StoreContext.Entities;
 
 public class Product : Entity
 {

@@ -1,6 +1,6 @@
 using Flunt.Validations;
 
-namespace Store.Shared.ValueObjects;
+namespace Store.Store.Shared.ValueObjects;
 
 public class Address : ValueObject
 {
@@ -31,7 +31,6 @@ public class Address : ValueObject
         int streetMinLen = 03;
         int streetMaxLen = 80;
         int zipCodeLen = 08;
-
 
         AddNotifications(new Contract()
             .Requires()

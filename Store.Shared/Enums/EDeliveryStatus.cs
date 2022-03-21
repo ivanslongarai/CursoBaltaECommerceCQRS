@@ -1,4 +1,4 @@
-namespace Store.SharedDomain.Enums;
+namespace Store.Store.Share.Enums;
 
 public enum EDeliveryStatus
 {

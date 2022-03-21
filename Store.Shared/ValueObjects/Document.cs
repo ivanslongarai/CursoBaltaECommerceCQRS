@@ -1,8 +1,8 @@
 
 using Flunt.Validations;
-using Store.SharedDomain.Enums;
+using Store.Store.Share.Enums;
 
-namespace Store.Shared.ValueObjects;
+namespace Store.Store.Shared.ValueObjects;
 
 public class Document : ValueObject
 {

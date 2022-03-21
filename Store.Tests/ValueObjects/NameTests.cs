@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Store.Shared.ValueObjects;
+using Store.Store.Shared.ValueObjects;
 
 namespace Store.Tests.ValueObjects;
 

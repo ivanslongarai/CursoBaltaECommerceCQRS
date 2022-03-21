@@ -1,6 +1,6 @@
 using Flunt.Notifications;
 
-namespace Store.Shared.Entities;
+namespace Store.Store.Shared.Entities;
 
 public abstract class Entity : Notifiable
 {

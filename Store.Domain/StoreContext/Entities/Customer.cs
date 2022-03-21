@@ -1,8 +1,8 @@
 using Flunt.Validations;
-using Store.Shared.Entities;
-using Store.Shared.ValueObjects;
+using Store.Store.Shared.Entities;
+using Store.Store.Shared.ValueObjects;
 
-namespace Store.StoreDomain.StoreContext.Entities;
+namespace Store.Domain.StoreContext.Entities;
 // Single-responsibility principle
 // Open–closed principle
 // L
@@ -12,18 +12,19 @@ namespace Store.StoreDomain.StoreContext.Entities;
 public class Customer : Entity
 {
     private readonly IList<Address> _addresses = new List<Address>();
-    public Customer(Name name, Document document, Email email, string? phone = null)
+    public Customer(Name name, Document document, Email email, string phone = null)
     {
         Name = name;
         Document = document;
         Email = email;
         Phone = phone;
+        Validate();
     }
 
     public Name Name { get; private set; }
     public Document Document { get; private set; }
     public Email Email { get; private set; }
-    public string? Phone { get; private set; }
+    public string Phone { get; private set; }
     public IReadOnlyCollection<Address> Addresses { get => _addresses.ToArray(); }
 
     public override void Validate()

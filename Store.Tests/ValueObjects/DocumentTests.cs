@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Store.Shared.ValueObjects;
-using Store.SharedDomain.Enums;
+using Store.Store.Shared.ValueObjects;
+using Store.Store.Share.Enums;
 
 namespace Store.Tests.ValueObjects;
 
@@ -9,7 +9,7 @@ public class DocumentTests
 {
     // Red, Green, Refactory
     // Just examples
-    
+
     [TestMethod]
     public void Given_ValidCPFDocument_ShouldReturn_ValidDocument()
     {
