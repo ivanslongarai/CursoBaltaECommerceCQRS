@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+      <PackageReference Include="flunt" Version="1.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Store.Shared\Store.Shared.csproj" />
+    <ProjectReference Include="..\Store.Domain\Store.Domain.csproj" />
+    <ProjectReference Include="..\Store.Infra\Store.Infra.csproj" />
+  </ItemGroup>
+
 </Project>

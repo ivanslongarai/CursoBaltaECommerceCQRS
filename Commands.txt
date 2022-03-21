@@ -16,3 +16,17 @@ dotnet add .\Store.Tests\Store.Tests.csproj reference .\Store.Domain\Store.Domai
 dotnet add .\Store.Tests\Store.Tests.csproj reference .\Store.Shared\Store.Shared.csproj
 
 dotnet add package flunt  --version=1.0.3
+
+Infra --> dotnet add package Dapper
+Infra --> dotnet add package System.Data.SqlClient
+dotnet add .\Store.Infra\Store.Infra.csproj reference .\Store.Shared\Store.Shared.csproj
+dotnet add .\Store.Infra\Store.Infra.csproj reference .\Store.Domain\Store.Domain.csproj
+
+API --> dotnet add package Swashbuckle.AspNetCore
+API --> dotnet add package Microsoft.AspNetCore
+
+dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Shared\Store.Shared.csproj
+dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Domain\Store.Domain.csproj
+dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Infra\Store.Infra.csproj
+
+dotnet build -c Release
