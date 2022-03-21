@@ -1,0 +1,18 @@
+Store.Api       -->> dotnet new web (ASP.NET Core Empty)
+Store.Domain    -->> dotnet new classlib 
+Store.Infra     -->> dotnet new classlib 
+Store.Shared    -->> dotnet new classlib 
+Store.Tests     -->> dotnet new mstest
+Store.Soluction -->> dotnet new sln --name Store
+
+dotnet sln add .\Store.Api\Store.Api.csproj
+dotnet sln add .\Store.Domain\Store.Domain.csproj
+dotnet sln add .\Store.Infra\Store.Infra.csproj
+dotnet sln add .\Store.Shared\Store.Shared.csproj
+dotnet sln add .\Store.Tests\Store.Tests.csproj
+
+dotnet add .\Store.Shared\Store.Shared.csproj reference .\Store.Domain\Store.Domain.csproj
+dotnet add .\Store.Tests\Store.Tests.csproj reference .\Store.Domain\Store.Domain.csproj
+dotnet add .\Store.Tests\Store.Tests.csproj reference .\Store.Shared\Store.Shared.csproj
+
+dotnet add package flunt  --version=1.0.3
