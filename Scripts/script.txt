@@ -7,9 +7,9 @@ CREATE TABLE [Customer]
 	[FirstName] VARCHAR(40) NOT NULL,
 	[LastName] VARCHAR(40) NOT NULL,
 	[Document] CHAR(11) NOT NULL,
-	[DocumentType] bit NOT NULL,
+	[DocumentType] BIT NOT NULL,
 	[Email] VARCHAR(160) NOT NULL,
-	[EmailType] bit NOT NULL,
+	[EmailType] BIT NOT NULL,
 	[Phone] VARCHAR(13) NOT NULL
 )
 
@@ -65,3 +65,141 @@ CREATE TABLE [Delivery] (
 	[Status] INT NOT NULL DEFAULT(1),
 	FOREIGN KEY([OrderId]) REFERENCES [Order]([Id])
 )
+
+USE [ECommerceBalta]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetCustomOrdersCount]    Script Date: 21/03/2022 18:36:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spGetCustomOrdersCount]
+	@Document VARCHAR(14)
+	AS
+SELECT
+		C.Id,
+		CONCAT(C.FirstName, ' ',C.LastName) Name,
+		COUNT(O.Id) Orders
+	FROM 
+		Customer as C
+	JOIN [Order] O ON O.CustomerId = C.Id
+
+	WHERE C.Document = @Document
+
+	GROUP BY C.Id, C.FirstName, C.LastName    
+
+USE [ECommerceBalta]
+GO
+/****** Object:  StoredProcedure [dbo].[spCreateCustomer]    Script Date: 21/03/2022 18:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spCreateCustomer]
+    @Id UNIQUEIDENTIFIER,
+    @FirstName VARCHAR(40),
+    @LastName VARCHAR(40),
+    @Document CHAR(11),
+	@DocumentType BIT,
+    @Email VARCHAR(160),
+    @EmailType BIT,
+    @Phone VARCHAR(13)
+AS
+    INSERT INTO [Customer] (
+        [Id], 
+        [FirstName], 
+        [LastName], 
+        [Document], 
+		[DocumentType],
+        [Email], 
+		[EmailType],
+        [Phone]
+    ) VALUES (
+        @Id,
+        @FirstName,
+        @LastName,
+        @Document,
+		@DocumentType,
+        @Email,
+		@EmailType,
+        @Phone
+    )
+
+USE [ECommerceBalta]
+GO
+/****** Object:  StoredProcedure [dbo].[spCreateAddress]    Script Date: 21/03/2022 18:35:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spCreateAddress]
+    @Id UNIQUEIDENTIFIER,
+	@CustomerId UNIQUEIDENTIFIER,
+	@Number VARCHAR(10),
+	@Complement VARCHAR(40),
+	@District VARCHAR(60),
+	@City VARCHAR(60),
+	@State CHAR(2),
+	@Country CHAR(2),
+	@ZipCode CHAR(8),
+	@Type INT
+AS
+    INSERT INTO [Address] (
+        [Id],
+        [CustomerId],
+        [Number],
+        [Complement],
+        [District],
+        [City],
+        [State],
+        [Country],
+        [ZipCode],
+        [Type]
+    ) VALUES (
+        @Id,
+        @CustomerId,
+        @Number,
+        @Complement,
+        @District,
+        @City,
+        @State,
+        @Country,
+        @ZipCode,
+        @Type
+    )
+
+USE [ECommerceBalta]
+GO
+/****** Object:  StoredProcedure [dbo].[spCheckEmail]    Script Date: 21/03/2022 18:35:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spCheckEmail]
+	@Email VARCHAR(160)
+AS
+	SELECT CASE WHEN EXISTS (
+		SELECT [Id]
+		FROM [Customer]
+		WHERE [Email] = @Email
+	)
+	THEN CAST(1 AS BIT)
+	ELSE CAST(0 AS BIT) END
+
+USE [ECommerceBalta]
+GO
+/****** Object:  StoredProcedure [dbo].[spCheckDocument]    Script Date: 21/03/2022 18:35:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spCheckDocument]
+	@Document CHAR(11)
+AS
+	SELECT CASE WHEN EXISTS (
+		SELECT [Id]
+		FROM [Customer]
+		WHERE [Document] = @Document
+	)
+	THEN CAST(1 AS BIT)
+	ELSE CAST(0 AS BIT) END

@@ -44,6 +44,7 @@ void ConfigureMvc()
 
 void ConfigureServices()
 {
+    builder.Services.AddResponseCompression();
     builder.Services.AddScoped<StoreDataContext, StoreDataContext>();
     builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
     builder.Services.AddTransient<IEmailService, EmailService>();
@@ -58,4 +59,5 @@ void AppUses()
 {
     app.UseHttpsRedirection();
     app.MapControllers();
+    app.UseResponseCompression();
 }

@@ -29,4 +29,5 @@ dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Shared\Store.Shared.cs
 dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Domain\Store.Domain.csproj
 dotnet add .\Store.Api\Store.Api.csproj reference .\Store.Infra\Store.Infra.csproj
 
+dotnet add package Microsoft.AspNetCore.ResponseCompression --version 2.0.1
 dotnet build -c Release

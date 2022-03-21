@@ -22,6 +22,9 @@ public class CustomerController : Controller
     }
 
     [HttpGet("v1/customers")]
+    //[ResponseCache(Location = ResponseCacheLocation.Client, Duration = 10)]
+    //[ResponseCache(Duration = 10)]
+    //Just an example //Cache-Control: public, max-age=10
     public ActionResult<IEnumerable<ListCustomerQueryResult>> Get()
     {
         return Ok(_ctx.GetAll());
